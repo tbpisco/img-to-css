@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>...</title>
+</head>
+
+<body class="container">
+    
+    <h1 class="text-center">...</h1>
+
+    <div class="row image-generator">
+        <div id="mensagemView"></div>
+        <div class="form-group form-upload">
+            <label for="pic">Choose file to upload</label>
+            <input type="file" id="pic" name="image" accept=".jpg, .jpeg, .png">
+            <p class="help-block">Example block-level help text here.</p>
+        </div>
+        <div class="form-group">
+            <label id="label-quantity" for="quantity">Quantity (between 1 and 10):</label>
+            <input id="quantity" type="range" name="points">
+        </div>
+        <button type="submit" class="submit btn btn-primary">Submit</button>
+    </div>
+    
+    <ul class="row result list-inline">
+        <li class="holder">
+            <div class="image-css"></div>
+        </li>
+        <li>
+            <textarea class="css-text" rows="3"></textarea>
+        </li>
+    </ul>
+    
+
+</body>
+
+</html>
