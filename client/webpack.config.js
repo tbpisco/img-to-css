@@ -1,5 +1,6 @@
 const path = require('path');
 const babiliPlugin = require('babili-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
@@ -37,7 +38,11 @@ let SERVICE_URL = JSON.stringify('http://localhost:3000');
 
 if(process.env.NODE_ENV == 'production') {
 
-    SERVICE_URL = JSON.stringify('http://endereco-da-sua-api');
+    SERVICE_URL = JSON.stringify('http://localhost:3000');
+
+    plugins.push(new CleanWebpackPlugin([
+        './build/**/*.*'
+    ]));
 
     plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
 
@@ -60,10 +65,10 @@ plugins.push(new webpack.DefinePlugin({ SERVICE_URL }));
 module.exports = {
     entry: {
         app: './src/app/app.js',
-        vendor: ['jquery', 'bootstrap','reflect-metadata']
+        vendor: ['jquery', /*'bootstrap',*/'reflect-metadata']
     },
     output: {
-        filename: 'js/[name].[hash].bundle.js',
+        filename: 'js/[name].js',
         path: path.resolve(__dirname, 'build')
     },
     module: {

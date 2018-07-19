@@ -4,36 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>...</title>
+    <title>Image to Pixel</title>
 </head>
 
 <body class="container">
     
-    <h1 class="text-center">...</h1>
-
+    <h1 class="text-center">Image to Css</h1>
+    <p class="text-center">Convert your pixel art to css :)</p>
     <div class="row image-generator">
-        <div id="mensagemView"></div>
-        <div class="form-group form-upload">
-            <label for="pic">Choose file to upload</label>
-            <input type="file" id="pic" name="image" accept=".jpg, .jpeg, .png">
-            <p class="help-block">Example block-level help text here.</p>
+        <div class="row">
+            <div class="form-group col-xs-8">
+                <div class="form-upload text-center">
+                    <label for="pic"><strong>Choose a file</strong><span class="box_dragndrop"> or drag it here</span>.</label>
+                    <input type="file" id="pic" name="image" aria-describedby="submit-image" accept=".jpg, .jpeg, .png">
+                    <button id="submit-image" type="submit" class="submit btn btn-primary">Upload</button>
+                    <small class="help-block form-text">Images 50px x 50px</small>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label id="label-quantity" for="quantity">Quantity (between 1 and 10):</label>
             <input id="quantity" type="range" name="points">
-        </div>
-        <button type="submit" class="submit btn btn-primary">Submit</button>
+        </div>-->
+        
     </div>
     
-    <ul class="row result list-inline">
-        <li class="holder">
-            <div class="image-css"></div>
-        </li>
-        <li>
-            <textarea class="css-text" rows="3"></textarea>
-        </li>
-    </ul>
-    
+    <div class="text-center">
+        <div class="col-image text-center">
+            <div class="holder">
+                <div class="image-css"></div>
+            </div>
+        </div>
+        <div class="col-code text-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-dark btn-html">HTML</button>
+                <button type="button" class="btn btn-dark btn-scss active">Scss</button>
+                <button type="button" class="btn btn-dark btn-css">CSS</button>
+            </div>
+            <ul class="result list-inline">
+                <li class="html">
+                    <pre class="pre-scrollable html-text" rows="3"><code></code></pre>
+                </li>
+
+                <li class="scss active">
+                    <pre class="pre-scrollable sass-text" rows="3"><code></code></pre>   
+                </li>
+
+                <li class="css">
+                    <pre class="pre-scrollable css-text" rows="3"><code></code></pre>     
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </body>
 

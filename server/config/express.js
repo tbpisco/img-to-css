@@ -9,15 +9,6 @@ var express = require('express')
 
 app.use(cors());
 
-app.use(express.json({limit: '5000000mb'}));
-app.use(express.urlencoded({extended: true, limit: '5000000mb'}));
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 app.use(compileSass({
     root: root,
     sourceMap: false, 
@@ -27,6 +18,21 @@ app.use(compileSass({
 }));
 
 app.use(express.static(root));
+    
+app.get('/', function(req, res) {
+    res.sendFile('index.html', { root: "../client/build" }); 
+});
+    
+app.use(express.static('../client/build')); 
+
+app.use(express.json({limit: '5000000mb'}));
+app.use(express.urlencoded({extended: true, limit: '5000000mb'}));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 routes(app);
 
