@@ -14,7 +14,7 @@
     "cors": "^2.8.4",
     "express": "^4.12.3",
     "express-compile-sass": "^4.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.9.2",
     "rimraf": "^2.6.2",
     "uuid": "^3.3.2"
   }
