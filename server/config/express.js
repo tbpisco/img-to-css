@@ -20,10 +20,10 @@ app.use(compileSass({
 app.use(express.static(root));
     
 app.get('/', function(req, res) {
-    res.sendFile('index.html', { root: "../client/build" }); 
+    res.sendFile(path.join(__dirname, '/../../client', 'build', 'index.html')); 
 });
     
-app.use(express.static('../client/build')); 
+app.use(express.static(path.join(__dirname, '/../../client', 'build'))); 
 
 app.use(express.json({limit: '5000000mb'}));
 app.use(express.urlencoded({extended: true, limit: '5000000mb'}));
