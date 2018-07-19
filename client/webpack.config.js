@@ -38,7 +38,7 @@ let SERVICE_URL = JSON.stringify('http://localhost:3000');
 
 if(process.env.NODE_ENV == 'production') {
 
-    SERVICE_URL = JSON.stringify('http://localhost:3000');
+    SERVICE_URL = JSON.stringify('img-to-css.herokuapp.com');
 
     plugins.push(new CleanWebpackPlugin([
         './build/**/*.*'
