@@ -30,7 +30,7 @@ export class Controller {
             .then(data => {
                 this._view.addTextIntoScssTab(data);
                 this.addScssMarioToDOM();
-                this.getSassCodeData()
+                this.getMarioSassCodeData()
                     .then(data => this._view.addSassCode(data))
                     .catch(error => alert(error));
             })
