@@ -1,9 +1,9 @@
 var api = {};
 
-var utils = require('../utils');
-const uuidv1 = require('uuid/v1');
-
-var fs = require('fs');
+var utils = require('../utils'),
+path =  require('path'),
+uuidv1 = require('uuid/v1'),
+fs = require('fs');
 
 
 api.csspixelateImage = function(req, res){
@@ -19,7 +19,7 @@ api.getSassCode = function(req, res){
 
     if(req.params.id == "mario"){
 
-        fs.readFile('mario-pixel.scss', 'utf8', function (err,data) {
+        fs.readFile(path.join(__dirname, '/../../../server', 'mario-pixel.scss'), 'utf8', function (err,data) {
             if (err) {
               return console.log(err);
             }
@@ -28,7 +28,7 @@ api.getSassCode = function(req, res){
 
     } else {
 
-        fs.readFile('uploads/' + req.params.id + '.scss', 'utf8', function (err,data) {
+        fs.readFile(path.join(__dirname, '/../../../server/uploads', req.params.id + '.scss'), 'utf8', function (err,data) {
             if (err) {
               return console.log(err);
             }
