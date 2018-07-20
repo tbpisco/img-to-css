@@ -32,12 +32,12 @@ export class Controller {
                 this.addScssMarioToDOM();
                 this.getMarioSassCodeData()
                     .then(data => this._view.addSassCode(data))
-                    .catch(error => alert(error));
+                    .catch(error => console.log(error));
             })
 
         this.getMarioSassCodeData()
             .then(data => this._view.addSassCode(data))
-            .catch(error => alert(error));
+            .catch(error => console.log(error));
     }
 
     addEvents(){
@@ -110,31 +110,31 @@ export class Controller {
                 this.addScssToDOM(this.current_hash);
                 this.getSassCodeData(this.current_hash)
                     .then(data => {this._view.addSassCode(data); this._resetLabel();})
-                    .catch(error => alert(error));
+                    .catch(error => console.log(error));
             }) 
-            .catch(error => alert(error));
+            .catch(error => console.log(error));
 
     }
 
     getScssPixelsData(data){
         this.current_hash = data;
         return this._http
-            .get(`${SERVICE_URL}/uploads/${data}.scss`);
+            .get(`/uploads/${data}.scss`);
     }
 
     getScssMarioPixelsData(){
         return this._http
-            .get(`${SERVICE_URL}/mario-pixel.scss`);
+            .get(`/mario-pixel.scss`);
     }
 
     getSassCodeData(data){
         return this._http
-            .get(`${SERVICE_URL}/sass/${data}`);
+            .get(`/sass/${data}`);
     }
 
     getMarioSassCodeData(){
         return this._http
-            .get(`${SERVICE_URL}/sass/mario`);
+            .get(`/sass/mario`);
     }
 
     _resetLabel(){

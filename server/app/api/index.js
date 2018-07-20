@@ -19,7 +19,7 @@ api.getSassCode = function(req, res){
 
     if(req.params.id == "mario"){
 
-        fs.readFile(path.join(__dirname, '/../../../client', 'mario-pixel.scss'), 'utf8', function (err,data) {
+        fs.readFile(path.join(__dirname, '/../../../server', 'mario-pixel.scss'), 'utf8', function (err,data) {
             if (err) {
               return console.log(err);
             }
@@ -28,7 +28,7 @@ api.getSassCode = function(req, res){
 
     } else {
 
-        fs.readFile(path.join(__dirname, '/../../../client/uploads', req.params.id + '.scss'), 'utf8', function (err,data) {
+        fs.readFile(path.join(__dirname, '/../../../server/uploads', req.params.id + '.scss'), 'utf8', function (err,data) {
             if (err) {
               return console.log(err);
             }
