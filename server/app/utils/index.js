@@ -9,7 +9,8 @@ utils.cleanFolder = function(folder, age){
 
     console.log('clean folder');
 
-    files = fs.readdirSync(uploadsDir)
+    files = fs.readdirSync(uploadsDir);
+        if(files.length > 0) return;
         files.forEach(function(file) {
             console.log(file);
             fs.stat(path.join(uploadsDir, file), function(err, stat) {
