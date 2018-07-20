@@ -58,7 +58,7 @@ utils.pixelToColor = function(pixelsArray, width, height, quantity){
 
 
 utils.createScssFile = function(data, filename){
-    fs.writeFile(path.join(__dirname, '/../../../server/public/uploads', filename + '.scss'), data, function (err) {
+    fs.writeFile(path.join(__dirname, '/../../../../server/public/uploads', filename + '.scss'), data, function (err) {
         if (err) return console.log(err);
         console.log('pixel.scss created');
     });
