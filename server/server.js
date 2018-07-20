@@ -6,5 +6,5 @@ var http = require('http'),
 
 http.createServer(app).listen((process.env.PORT || 3000), function() {
     console.log('Server running on port: ' + this.address().port);
-    setInterval(() => { utils.cleanFolder(path.join(__dirname, '/public/uploads'), 60);}, 60 * 1000);
+    setInterval(() => { utils.cleanFolder(path.join(__dirname, '/public/uploads'), 60 * 60);}, 60 * 60 * 1000);
 });
