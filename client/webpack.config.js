@@ -34,11 +34,11 @@ plugins.push(new webpack.optimize.CommonsChunkPlugin({
 
 }));
 
-let SERVICE_URL = JSON.stringify('http://localhost:3000');
+//let SERVICE_URL = JSON.stringify('http://localhost:3000');
 
 if(process.env.NODE_ENV == 'production') {
 
-    SERVICE_URL = JSON.stringify('/img-to-css.herokuapp.com');
+    //SERVICE_URL = JSON.stringify('/img-to-css.herokuapp.com');
 
     plugins.push(new CleanWebpackPlugin([
         './build/**/*.*'
@@ -60,7 +60,7 @@ if(process.env.NODE_ENV == 'production') {
         
 }
 
-plugins.push(new webpack.DefinePlugin({ SERVICE_URL }));
+//plugins.push(new webpack.DefinePlugin({ SERVICE_URL }));
 
 module.exports = {
     entry: {

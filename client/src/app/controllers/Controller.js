@@ -143,7 +143,7 @@ export class Controller {
 
     addScssToDOM(data){
         let link = document.createElement("LINK");
-        link.setAttribute("href", `${SERVICE_URL}/uploads/${this.current_hash}.scss`);
+        link.setAttribute("href", `/uploads/${this.current_hash}.scss`);
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("type", "text/css");
         document.getElementsByTagName("head")[0].appendChild(link);
@@ -151,7 +151,7 @@ export class Controller {
 
     addScssMarioToDOM(){
         let link = document.createElement("LINK");
-        link.setAttribute("href", `${SERVICE_URL}/mario-pixel.scss`);
+        link.setAttribute("href", `/mario-pixel.scss`);
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("type", "text/css");
         document.getElementsByTagName("head")[0].appendChild(link);
@@ -220,7 +220,7 @@ export class Controller {
 
     sendPixels(pixelsArray, w, h, quantity){
         return this._http
-            .post(`${SERVICE_URL}/image`, {pixelsArray, w, h, quantity})
+            .post(`/image`, {pixelsArray, w, h, quantity})
     }
 
     isAdvancedUpload() {
