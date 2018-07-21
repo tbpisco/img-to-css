@@ -3,7 +3,7 @@ export class View {
     constructor() {
          // this._inputQuantity = document.querySelector('#quantity');
         //this._labelQuantity = document.querySelector('#label-quantity');
-        this._inputFile = document.querySelector('input[type=file]');
+        this._inputFile = document.querySelector('#pic');
         this._inputTextHelp = document.querySelector('.help-block');
 
         this._btnHtml = document.querySelector('.btn-html');

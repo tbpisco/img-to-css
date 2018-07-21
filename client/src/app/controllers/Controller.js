@@ -26,16 +26,16 @@ export class Controller {
 
         this.addEvents();
 
-        this.getScssMarioPixelsData()
+        this.getScssDefaultPixelsData()
             .then(data => {
                 this._view.addTextIntoScssTab(data);
-                this.addScssMarioToDOM();
-                this.getMarioSassCodeData()
+                this.addScssDefaultToDOM();
+                this.getDefaultSassCodeData()
                     .then(data => this._view.addSassCode(data))
                     .catch(error => console.log(error));
             })
 
-        this.getMarioSassCodeData()
+        this.getDefaultSassCodeData()
             .then(data => this._view.addSassCode(data))
             .catch(error => console.log(error));
     }
@@ -52,11 +52,18 @@ export class Controller {
         this._view._fileUploadContainer.addEventListener("dragleave", this._view.containerRemoveActive);
         this._view._fileUploadContainer.addEventListener("dragend", this._view.containerRemoveActive);
         this._view._fileUploadContainer.addEventListener("drop", (e ) => {this.drop.call(this, e)});
+
+        this._view._inputFile.addEventListener("change", this.changeInput.bind(this));
+    }
+
+    changeInput(e){
+        if(!this._view._inputFile.files[0])return;
+        this._uploadImage(this._view._inputFile.files[0]);
     }
 
     onSubmit(e){
         e.preventDefault();
-        this._uploadImage(this._inputFile.files[0]); 
+        this._uploadImage(this._view._inputFile.files[0]); 
     }
 
     drop(e){
@@ -122,9 +129,9 @@ export class Controller {
             .get(`/uploads/${data}.scss`);
     }
 
-    getScssMarioPixelsData(){
+    getScssDefaultPixelsData(){
         return this._http
-            .get(`/mario-pixel.scss`);
+            .get(`/default.scss`);
     }
 
     getSassCodeData(data){
@@ -132,26 +139,26 @@ export class Controller {
             .get(`/sass/${data}`);
     }
 
-    getMarioSassCodeData(){
+    getDefaultSassCodeData(){
         return this._http
-            .get(`/sass/mario`);
+            .get(`/sass`);
     }
 
     _resetLabel(){
         this._view.updateLabelText(`Images up to ${this._maxSize} Kb.`);
     }
 
-    addScssToDOM(data){
-        let link = document.createElement("LINK");
-        link.setAttribute("href", `/uploads/${this.current_hash}.scss`);
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("type", "text/css");
-        document.getElementsByTagName("head")[0].appendChild(link);
+    addScssToDOM(filename){
+        this.appendLinkToDOM(`/uploads/${filename}.scss`);
     }
 
-    addScssMarioToDOM(){
+    addScssDefaultToDOM(){
+        this.appendLinkToDOM(`/default.scss`);
+    }
+
+    appendLinkToDOM(href){
         let link = document.createElement("LINK");
-        link.setAttribute("href", `/mario-pixel.scss`);
+        link.setAttribute("href", href);
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("type", "text/css");
         document.getElementsByTagName("head")[0].appendChild(link);

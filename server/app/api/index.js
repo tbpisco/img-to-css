@@ -17,9 +17,9 @@ api.csspixelateImage = function(req, res){
 
 api.getSassCode = function(req, res){
 
-    if(req.params.id == "mario"){
+    if(!req.params.id){
 
-        fs.readFile(path.join(__dirname, '/../../../server/public', 'mario-pixel.scss'), 'utf8', function (err,data) {
+        fs.readFile(path.join(__dirname, '/../../../server/public', 'default.scss'), 'utf8', function (err,data) {
             if (err) {
               return console.log(err);
             }
