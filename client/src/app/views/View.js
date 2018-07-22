@@ -14,10 +14,15 @@ export class View {
         this._htmlCode = document.querySelector('.html');
         this._cssCode = document.querySelector('.css');
 
+        this.btnCopy = document.querySelector('.btn-copy');
         this.btnSubmit = document.querySelector('.submit');
-        
 
         this._fileUploadContainer = document.querySelector('.form-upload');
+    }
+
+    btnCopyChangeLabel(){
+        this.btnCopy.innerText = "Copied!";
+        setTimeout(() => this.btnCopy.innerText = "Copy", 1000);
     }
 
     containerActive(e){

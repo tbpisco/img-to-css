@@ -53,8 +53,25 @@ export class Controller {
         this._view._fileUploadContainer.addEventListener("dragend", this._view.containerRemoveActive);
         this._view._fileUploadContainer.addEventListener("drop", (e ) => {this.drop.call(this, e)});
 
+        this._view.btnCopy.addEventListener("click", this.copyCurrentTab.bind(this));
+
         this._view._inputFile.addEventListener("change", this.changeInput.bind(this));
     }
+
+    copyCurrentTab(e){
+        this.copyText(document.querySelector('.result li.active').innerText);
+        this._view.btnCopyChangeLabel();
+    }
+
+    copyText(_string){
+		var textArea = document.createElement('textarea');
+	    textArea.setAttribute('style','width:1px;border:0;opacity:0;');
+	    document.body.appendChild(textArea);
+	    textArea.value = _string;
+	    textArea.select();
+    	document.execCommand('copy');
+    	document.body.removeChild(textArea);
+	}
 
     changeInput(e){
         if(!this._view._inputFile.files[0])return;

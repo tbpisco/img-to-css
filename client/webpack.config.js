@@ -5,6 +5,8 @@ const extractTextPlugin = require('extract-text-webpack-plugin');
 const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWepackPlugin = require('html-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let plugins = [];
 
@@ -20,7 +22,11 @@ plugins.push(new HtmlWepackPlugin({
     template: __dirname + '/src/main.html'
 
 }));
-plugins.push(new extractTextPlugin('css/styles.css'))
+plugins.push(new extractTextPlugin('css/styles.css'));
+
+plugins.push(new CopyWebpackPlugin([{
+    from: 'src/imgs/', to: 'imgs/'
+}]));
 
 plugins.push(new webpack.ProvidePlugin({
     '$': 'jquery/dist/jquery.js',
@@ -57,7 +63,8 @@ if(process.env.NODE_ENV == 'production') {
         },
         canPrint: true
     }));
-        
+    
+    plugins.push(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }));
 }
 
 //plugins.push(new webpack.DefinePlugin({ SERVICE_URL }));
