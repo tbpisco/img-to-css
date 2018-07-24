@@ -1,5 +1,6 @@
 import { HttpService } from "../services/HttpService";
 import {View} from "../views/View";
+import { isMobile } from 'mobile-device-detect';
 
 export class Controller {
 
@@ -21,6 +22,7 @@ export class Controller {
     _init(){
 
         if(!this.isAdvancedUpload())document.querySelector("body").classList.add("no-drag");
+        if(isMobile)document.querySelector("body").classList.add("mobile");
 
         this._resetLabel();
 
