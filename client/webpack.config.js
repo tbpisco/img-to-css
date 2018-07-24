@@ -72,7 +72,7 @@ if(process.env.NODE_ENV == 'production') {
 module.exports = {
     entry: {
         app: './src/app/app.js',
-        vendor: ['jquery', /*'bootstrap',*/'reflect-metadata']
+        vendor: ['babel-polyfill','jquery', /*'bootstrap',*/'reflect-metadata']
     },
     output: {
         filename: 'js/[name].js',

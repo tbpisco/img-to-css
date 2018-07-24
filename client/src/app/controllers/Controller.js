@@ -59,7 +59,7 @@ export class Controller {
     }
 
     copyCurrentTab(e){
-        this.copyText(document.querySelector('.result li.active').innerText);
+        this.copyText(document.querySelector('.result div.active').innerText);
         this._view.btnCopyChangeLabel();
     }
 
