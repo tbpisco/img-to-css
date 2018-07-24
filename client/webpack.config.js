@@ -28,11 +28,6 @@ plugins.push(new CopyWebpackPlugin([{
     from: 'src/imgs/', to: 'imgs/'
 }]));
 
-plugins.push(new webpack.ProvidePlugin({
-    '$': 'jquery/dist/jquery.js',
-    'jQuery': 'jquery/dist/jquery.js'
-}));
-
 plugins.push(new webpack.optimize.CommonsChunkPlugin({
 
     name: 'vendor', 
@@ -72,7 +67,7 @@ if(process.env.NODE_ENV == 'production') {
 module.exports = {
     entry: {
         app: './src/app/app.js',
-        vendor: ['babel-polyfill','jquery', /*'bootstrap',*/'reflect-metadata']
+        vendor: ['babel-polyfill', 'reflect-metadata']
     },
     output: {
         filename: 'js/[name].js',
